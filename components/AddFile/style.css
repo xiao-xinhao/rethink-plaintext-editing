@@ -1,0 +1,12 @@
+.AddNewFile {
+    margin: 0 auto;
+}
+.AddNewFile .filenameError{
+    color: red;
+    
+    display: none;
+  }
+.AddNewFile .filenameAdded {
+    color: green;
+    display: none;
+  }

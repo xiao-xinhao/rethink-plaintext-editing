@@ -1,0 +1,87 @@
+.editor {
+  width: 1200px;
+  height: 1000px;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.16);
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+
+.editor .title {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-dark-mute);
+  padding: 0 20px;
+  line-height: 40px;
+  background-color: var(--color-background);
+}
+
+.editor :global(.public-DraftEditor-content) {
+  min-height: 140px;
+}
+
+.Container {
+  
+  width: 100%;
+  height: 85%;
+  display: flex;
+  overflow-y:hidden;
+  
+}
+
+
+
+.output {
+  position: absolute;
+ 
+  width: 1000px;
+  height: 900px;
+  padding: 1rem;
+  border: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 0.8rem;
+  background: transparent;
+  white-space: pre-wrap;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 3;
+  margin: 0;
+  overflow-y: visible;
+  
+  
+}
+
+.input {
+  position: absolute;
+  
+  width: 1000px;
+  height: 900px;
+  padding: 1rem;
+  border: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 0.8rem;
+  background: transparent;
+  white-space: pre-wrap;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  font-size: 1rem;
+  opacity: 1;
+  margin: 0;
+  color: hsl(0, 0%, 40%);
+  
+  overflow-y: visible;
+}
+.input:focus {
+  border: none;
+}
+
+.preview{
+  
+  float:right;
+  width: 180px;
+}

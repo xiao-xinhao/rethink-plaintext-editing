@@ -81,6 +81,15 @@ body {
   color: var(--color-active);
 }
 
+.page aside .AddNewFile .filenameError{
+  color: red;
+  
+  display: none;
+}
+.page aside .AddNewFile .filenameAdded {
+  color: green;
+  display: none;
+}
 /* Files Table */
 .files {
   width: 540px;
@@ -110,6 +119,13 @@ body {
   line-height: 20px;
   border: none;
 }
+
+.delete {
+  visibility:visible;
+  border: none;
+}
+
+
 
 .files .row {
   border-bottom: 1px solid var(--color-border);
@@ -195,3 +211,4 @@ body {
     monospace;
   padding: 20px;
 }
+

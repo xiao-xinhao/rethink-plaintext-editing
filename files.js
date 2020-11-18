@@ -1,4 +1,7 @@
 export function listFiles() {
+  
+  
+  
   const guide = new File(
     [
       `The objective is to significantly improve this file browser. Features to think about include: a text editor, markdown and code previews, or file changes persisting across reloads.
@@ -90,5 +93,10 @@ export default initialValue => {
     }
   );
 
+
+    
+
+
   return [guide, plain, water, fancy, javascript, json];
+  
 }
