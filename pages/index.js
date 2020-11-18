@@ -415,6 +415,10 @@ function PlaintextFilesChallenge() {
             Let{"'"}s explore files in JavaScript. What could be more fun than
             rendering and editing plaintext? Not much, as it turns out.
           </div>
+          <div className={css.description}>
+            Type in a file name on the TextBox below to create new file. Enjoy the experience 
+            with different kinds of Text Editors. 
+          </div>
         </header>
         
         <AddFile write = {write}></AddFile>
