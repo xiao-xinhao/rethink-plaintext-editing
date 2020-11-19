@@ -35,7 +35,7 @@ function PlaintextEditor({ file, write }) {
       var fs = require('browserify-fs');
 
       fs.readFile('/files/'+file.name, function(error,data) {
-        //console.log();
+
         if(data) {
           if(data.length>0) {
             
@@ -45,8 +45,7 @@ function PlaintextEditor({ file, write }) {
             const blocks = JSON.parse(data).blocks;
             console.log(blocks);
             console.log(blocks.length);
-            var container = document.getElementsByClassName("public-DraftEditor-content");
-            //console.log(container[0].firstChild.textContent);
+            
             var str;
             for(var i =0; i < blocks.length; i++) {
               if(blocks[i].text== "") {
@@ -57,7 +56,6 @@ function PlaintextEditor({ file, write }) {
 
             }
             console.log(str);
-            //console.log([0].text +JSON.parse(data).blocks[1].text  + JSON.parse(data).blocks[2].text);
             setValue(editorState);
           }else {
             console.log("empty");
@@ -90,31 +88,17 @@ function PlaintextEditor({ file, write }) {
     })();
   }, [value]);
 
-
+  /*
+  //-------------Auto Save------------------ 
+  //Can't use because of lagging
   useEffect(()=> {
       if(value) {
           onClick_save(editorState,file.name);
         
       }
-      
-    
   },[editorState.getCurrentContent()]);
-  
-  const handleTabKey = (e) => {
-    if(e.keyCode === 9) {
-      console.log("tab");
-      var content = editorState.getCurrentContent();
-      var selection = editorState.getSelection();
-      console.log(selection);
-      var newContent = Modifier.replaceText(content,selection, "    ");
-      var newState = EditorState.push(editorState,newContent,'insert-characters');
-      console.log(newState.getSelection());
-      
-      setEditorState(EditorState.moveSelectionToEnd(newState));
-      
-    }
-  }
-
+  */
+ 
 
   return (
     <div className={css.editor}>
@@ -124,7 +108,7 @@ function PlaintextEditor({ file, write }) {
         
       </div>
       <Bar>
-        <Editor customStyleMap={Map} editorState={editorState} onChange={setEditorState} onTab={handleTabKey} />
+        <Editor customStyleMap={Map} editorState={editorState} onChange={setEditorState}  />
       </Bar>
  
     </div>

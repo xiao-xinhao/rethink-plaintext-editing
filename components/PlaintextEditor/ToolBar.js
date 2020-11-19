@@ -3,7 +3,7 @@ import {Container, ToolBarItem,Bar, FontSizeContainer, ColorContainer} from './c
 import {RichUtils, Modifier, EditorBlock} from 'draft-js';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBold, faItalic, faUnderline, faMinus, faPlus, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
+import {faBold, faItalic, faUnderline, faMinus, faPlus, faPaintBrush, faWindowRestore} from '@fortawesome/free-solid-svg-icons';
 import {ToolBarButton, ColorButton} from './ToolBarButton';
 import {colorStyleMap, fontStyleMap} from './StyleMaps';
 import {convertToRaw} from 'draft-js';
@@ -29,19 +29,13 @@ export default function ToolBar(props) {
     const applyStyle = (style) => {
         if(style) {
             setEditorState(RichUtils.toggleInlineStyle(editorState,style));
-           // setEditorState(RichUtils.toggleBlockType(editorState,));
-            //setEditorState(RichUtils.toggleInlineStyle(editorState,"ALIGNCENTER"));
         }else {
             console.log("save");
             const raw = convertToRaw(editorState.getCurrentContent());
             console.log(JSON.stringify(raw));
             var fs = require('browserify-fs');
             fs.writeFile('/files' + filename, JSON.stringify(raw), function() {
-              fs.readFile('/files' + filename, function(err, data) {
-                console.log(JSON.parse(data));
-                console.log("hi");
-                
-              });
+                window.confirm("Saved.");
             });
 
 

@@ -71,7 +71,8 @@ function MarkdownEditor({ file, write }) {
     })();
   }, [value]);
 
-
+  /*
+  //--------------Auto Save------------
   useEffect(()=>{
     if(name) {
     var fs = require('browserify-fs');
@@ -82,6 +83,7 @@ function MarkdownEditor({ file, write }) {
     });
     }
   },[originalText]);
+  */
 
   const contextValue = {
     name,

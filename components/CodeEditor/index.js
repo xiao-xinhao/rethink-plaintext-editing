@@ -1,7 +1,6 @@
 import React, {useState,useEffect}from 'react';
 import css from './style.css';
 import Editor from './Editor';
-import Minimap from 'react-simple-minimap';
 
 export default function CodeEditor({file,write}) {
 

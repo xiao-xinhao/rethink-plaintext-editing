@@ -19,9 +19,7 @@ import IconJSONSVG from '../public/icon-json.svg';
 
 import css from './style.module.css';
 import { EditorState } from 'draft-js';
-import Minimap from 'react-simple-minimap';
-//import fs from 'fs';
-//import BrowserFs from 'browserfs';
+
 
 const TYPE_TO_ICON = {
   'text/plain': IconPlaintextSVG,
@@ -60,12 +58,20 @@ function FilesTable({ files, setFiles, activeFile, setActiveFile }) {
                 document.getElementById("AddError").style.display = "none";
                 document.getElementById("filenameExist").style.display = "none";
                 document.getElementById("filenameError").style.display = "none";
+                document.getElementById("EmptyFilenameError").style.display = "none";
                 console.log(document.getElementById("FilesTable").lastChild.hasChildNodes(e.currentTarget));
                 console.log(document.getElementById("FilesTable"));
                 console.log(e.currentTarget);
+                if(activeFile) {
+                  var response = window.confirm("Make sure you save before you switch to another file.");
+                  if(response == true) {
+                    setActiveFile(file);
+                  }
+                }else {
+                  setActiveFile(file);
+                }
                 
                 
-                setActiveFile(file);
               }}>
                 <div
                   className={css.icon}
@@ -80,11 +86,18 @@ function FilesTable({ files, setFiles, activeFile, setActiveFile }) {
                 document.getElementById("AddError").style.display = "none";
                 document.getElementById("filenameExist").style.display = "none";
                 document.getElementById("filenameError").style.display = "none";
+                document.getElementById("EmptyFilenameError").style.display = "none";
                 console.log(document.getElementById("FilesTable").lastChild.hasChildNodes(e.currentTarget));
                 console.log(document.getElementById("FilesTable"));
                 console.log(e.currentTarget.lastChild.firstChild);
-                
-                setActiveFile(file);
+                if(activeFile) {
+                  var response = window.confirm("Make sure you save your changes before you switch to another file.");
+                  if(response == true) {
+                    setActiveFile(file);
+                  }
+                }else {
+                  setActiveFile(file);
+                }
                 
               
               }}>
@@ -100,6 +113,7 @@ function FilesTable({ files, setFiles, activeFile, setActiveFile }) {
                  document.getElementById("AddError").style.display = "none";
                  document.getElementById("filenameExist").style.display = "none";
                 document.getElementById("filenameError").style.display = "none";
+                document.getElementById("EmptyFilenameError").style.display = "none";
                  var table = document.getElementById("FilesTable");
                  console.log(table.childNodes[1]);
                  var filename = e.currentTarget.parentElement.firstChild.lastChild.textContent;
@@ -107,7 +121,6 @@ function FilesTable({ files, setFiles, activeFile, setActiveFile }) {
                  if(response == true) {
                   console.log(e.currentTarget.parentElement);
                   console.log(table.childNodes[1]);
-                  //table.childNodes[1].removeChild(e.currentTarget.parentElement);
                   var fs = require('browserify-fs');
                   var fi = [];
                   fi = fi.concat(files);
@@ -186,7 +199,6 @@ function PlaintextFilesChallenge() {
     
     //const f = listFiles();
     //setFiles(f);
-    // console.log(files.length)
     /*
       --------------------------------
     */
@@ -195,20 +207,8 @@ function PlaintextFilesChallenge() {
     
   }, []);
 
-  useEffect(()=>{
-    console.log(files.length);
-    
-    loadFiles(files);
-    
-    
-    //loadFiles(files);
-  },[]);
-
 
   const vertifyExists = (file,files) => {
-    console.log("hi");
-    console.log(file);
-    console.log(files);
     for(var i =0; i < files.length; i++) {
       console.log(file.name);
       if(files[i].name == file.name) {
@@ -222,9 +222,6 @@ function PlaintextFilesChallenge() {
     var fi = [];
     fi = fi.concat(files);
     fs.stat('./files' + file.name, function(err,data){
-      console.log("Modified");
-      console.log(file.name);
-      console.log(data);
       if(data) {
         var f;
         for(var i =0; i < files.length;i++) {
@@ -243,8 +240,6 @@ function PlaintextFilesChallenge() {
                 lastModifiedDate: lastModified
 
               });
-              console.log(files[i].lastModifiedDate);
-              console.log(f.lastModifiedDate);
             
             fi.splice(i,1);
             fi.push(f);
@@ -253,8 +248,6 @@ function PlaintextFilesChallenge() {
             
         }
       }
-      console.log("set");
-      console.log(f.lastModifiedDate);
       setFiles(fi);
       
     }
@@ -262,7 +255,6 @@ function PlaintextFilesChallenge() {
     });
   }
   const getModifiedDate = (files) => {
-    console.log(files.length);
     for(var i = 0; i < files.length; i++) {
       
       changeSingleDate(files[i],files);
@@ -272,8 +264,6 @@ function PlaintextFilesChallenge() {
   };
 
  const loadFiles = (files) => {
-   console.log(files.length);
-   console.log(document.getElementById("FilesTable"));
   var fs = require("browserify-fs");
   var fi = [];
   //var fi = fi.concat(files);
@@ -290,11 +280,8 @@ function PlaintextFilesChallenge() {
     for(var i = 0; i < data.length; i++) {
       
       var filename = data[i].toString();
-      
-      //console.log(filename);
       var ext = filename.split('.');
       
-
       if(ext[ext.length-1].toLowerCase() == 'txt') {
         var f = new File(
           [""],
@@ -355,19 +342,11 @@ function PlaintextFilesChallenge() {
           console.log("push");
           fi.push(f);
          }
-      }
-      
-        
-      //console.log(fi.length);
-      //files.push(fi);
-      
+      } 
       
     }
-    console.log(fi);
-    //fi  = files + fi;
     setFiles(fi);
     getModifiedDate(fi);
-    //console.log(files);
   }
   
   });
@@ -392,10 +371,6 @@ function PlaintextFilesChallenge() {
       //loadFiles(f);
     });
     
-    //setFiles(f);
-    var table = document.getElementById("FilesTable");
-    //;
-    console.log(f.length);
   };
   
 
@@ -419,11 +394,13 @@ function PlaintextFilesChallenge() {
             Type in a file name on the TextBox below to create new file. Enjoy the experience 
             with different kinds of Text Editors. 
           </div>
+          <div className={css.description}>
+            This website can only support .txt, .md, .js, and .json for now.
+          </div>
         </header>
         
         <AddFile write = {write}></AddFile>
         
-        {/* <button name="Save" onClick={saveEvent}><h3>Save</h3></button> */}
         <FilesTable
           files={files}
           activeFile={activeFile}
@@ -451,7 +428,6 @@ function PlaintextFilesChallenge() {
           <>
             {Editor && <Editor file={activeFile} write={write} />}
             {!Editor && <div>
-              {/* <Minimap  of={<CodeEditor file={activeFile} write = {write}/>} width = {400} height={4000} ></Minimap>  */}
               <CodeEditor file={activeFile} write = {write}/>
               </div>}
           </>

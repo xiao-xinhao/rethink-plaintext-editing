@@ -1,5 +1,5 @@
 .editor {
-  width: 1200px;
+  width: 1400px;
   height: 1000px;
   background-color: var(--color-white);
   box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.16);
@@ -37,7 +37,7 @@
 .output {
   position: absolute;
  
-  width: 1000px;
+  width: 1400px;
   height: 900px;
   padding: 1rem;
   border: none;
@@ -59,7 +59,7 @@
 .input {
   position: absolute;
   
-  width: 1000px;
+  width: 1400px;
   height: 900px;
   padding: 1rem;
   border: none;

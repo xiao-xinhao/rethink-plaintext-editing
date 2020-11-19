@@ -3,7 +3,7 @@ import React, {useContext}from 'react';
 import {ToolBarContainer, ToolBarItem} from './common';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSave} from '@fortawesome/free-solid-svg-icons';
-import EditorContext from './EditorContext';
+
 
 const ToolBarButton = [
     
@@ -18,17 +18,16 @@ const ToolBarButton = [
 export default function ToolBar(props) {
     
 
-    const {filenmae} = props;
-    const {originalText, name} = useContext(EditorContext);
+    const {name,text} = props;
+    
 
     const  saveButtonClick = () => {
         console.log("hi");
-        console.log(originalText);
+        console.log(text);
         console.log(name);
         var fs = require('browserify-fs');
-        fs.writeFile('/files/' + name, originalText,function() {
+        fs.writeFile('/files/' + name, text,function() {
             console.log("saved");
-            
             window.confirm("Saved.");
         });
         

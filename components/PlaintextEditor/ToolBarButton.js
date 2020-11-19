@@ -5,6 +5,10 @@ import {faBold, faItalic, faUnderline,faSave, faPlus,faMinus, faAlignCenter} fro
 
 const ToolBarButton = [
     {
+        label: "save",
+        icon: <FontAwesomeIcon icon ={faSave}/>
+    },
+    {
         label: "bold",
         style: "BOLD",
         icon: <FontAwesomeIcon icon = {faBold}/>
