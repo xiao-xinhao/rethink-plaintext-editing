@@ -27,6 +27,7 @@ export const ResultContainer = styled.div`
     width: 50%;
     height: 100%;
     padding: 13px;
+    overflow: auto;
     
 `;
 
@@ -45,6 +46,7 @@ export const ResultArea = styled.div`
     resize: none;
     border: none;
     outline: none;
+    overflow: auto;
 
 `;
 

@@ -18,7 +18,6 @@ export default function Editor(props) {
         setTextValue(newValue);
         setOriginalText(newValue);
     }
-    console.log(textValue);
 
     return (
         <Container>

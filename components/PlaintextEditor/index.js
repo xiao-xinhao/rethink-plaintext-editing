@@ -30,7 +30,7 @@ function PlaintextEditor({ file, write }) {
       
       setValue(await file.text());
       
-      console.log(value);
+      //console.log(value);
       
       var fs = require('browserify-fs');
 
@@ -41,10 +41,10 @@ function PlaintextEditor({ file, write }) {
             
             setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(data))));
           
-            console.log(editorState.getCurrentContent());
+            //console.log(editorState.getCurrentContent());
             const blocks = JSON.parse(data).blocks;
-            console.log(blocks);
-            console.log(blocks.length);
+            //console.log(blocks);
+            //console.log(blocks.length);
             
             var str;
             for(var i =0; i < blocks.length; i++) {
@@ -55,13 +55,13 @@ function PlaintextEditor({ file, write }) {
               }
 
             }
-            console.log(str);
+            //console.log(str);
             setValue(editorState);
           }else {
             console.log("empty");
             setValue(EditorState.createEmpty());
             setEditorState(EditorState.createEmpty());
-            console.log(editorState.getCurrentContent().getFirstBlock());
+            //console.log(editorState.getCurrentContent().getFirstBlock());
           }
 
         }
@@ -82,7 +82,7 @@ function PlaintextEditor({ file, write }) {
         }
       }else {
         setValue(editorState);
-        console.log(editorState.getCurrentContent().getFirstBlock());
+        //console.log(editorState.getCurrentContent().getFirstBlock());
       }
       
     })();

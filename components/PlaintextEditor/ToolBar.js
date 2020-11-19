@@ -32,7 +32,7 @@ export default function ToolBar(props) {
         }else {
             console.log("save");
             const raw = convertToRaw(editorState.getCurrentContent());
-            console.log(JSON.stringify(raw));
+            //console.log(JSON.stringify(raw));
             var fs = require('browserify-fs');
             fs.writeFile('/files' + filename, JSON.stringify(raw), function() {
                 window.confirm("Saved.");

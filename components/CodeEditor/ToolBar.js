@@ -23,8 +23,8 @@ export default function ToolBar(props) {
 
     const  saveButtonClick = () => {
         console.log("hi");
-        console.log(text);
-        console.log(name);
+        //console.log(text);
+        //console.log(name);
         var fs = require('browserify-fs');
         fs.writeFile('/files/' + name, text,function() {
             console.log("saved");

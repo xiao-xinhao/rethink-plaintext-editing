@@ -25,7 +25,7 @@ export default function CodeEditor({file,write}) {
             fs.readFile('/files/'+file.name, function(error,data) {
                 if(data) {
                     setValue(data.toString());
-                    console.log(data.toString());
+                    //console.log(data.toString());
                 }
             });
             
